@@ -1,71 +1,37 @@
-# Advent of Code 2025 Framework
+# Advent of Code 2025
 
-## Purpose
-This repository is a workspace for solving Advent of Code 2025 puzzles. The goal is to give a simple, restart-safe structure so your dad can tackle each day’s problem in order and keep progress tracked.
+## Repo layout
+- `plan.md` — this file; workflow reference and progress tracker
+- `setup_day.py` — scaffold script (see below)
+- `day-XX/input.txt` — real puzzle input (downloaded via aocd)
+- `day-XX/example.txt` — example input (downloaded via aocd)
+- `day-XX/solution.py` — solution with `parse_input`, `solve_part1`, `solve_part2`
+- `day-XX/test_solution.py` — pytest tests against the example
 
-## How this repo is organized
-- `plan.md` — high-level workflow and status tracking
-- `day-XX/` — one folder per AoC day (e.g. `day-01`, `day-02`)
-- `day-XX/input.txt` — puzzle input for that day
-- `day-XX/example.txt` — optional sample input from the prompt
-- `day-XX/solution.py` — Python solution code for that day
-- `day-XX/test_solution.py` — simple tests for sample output
-- `requirements.txt` — Python dependencies, if any
+## Starting a new day
+
+```bash
+python setup_day.py <N>
+```
+
+This creates `day-0N/` and downloads `input.txt` and `example.txt` via the
+`aocd` library (requires an AoC session cookie — see aocd docs if not set up).
+It also drops in a `solution.py` template and a `test_solution.py` pre-filled
+with the Part 1 example answer where aocd can find it. Safe to re-run — existing
+files are never overwritten.
 
 ## Daily workflow
-1. Create a new folder for the day: `day-XX`
-2. Save the real puzzle input in `day-XX/input.txt`
-3. Add sample input to `day-XX/example.txt` if the prompt includes one
-4. Create `day-XX/solution.py` and implement:
-   - `parse_input()`
-   - `solve_part1()`
-   - `solve_part2()`
-   - a `__main__` block to print both answers
-5. Create `day-XX/test_solution.py` to verify the sample input and expected output
-6. Run the tests and confirm the sample cases pass
-7. Run `day-XX/solution.py` on the real input
-8. Record the real answers in the day folder or a progress note
-9. Update `plan.md` with the current day and status
-10. Repeat for the next day
+1. Run `python setup_day.py <N>`
+2. Read the puzzle on adventofcode.com
+3. Implement `solve_part1()` in `day-0N/solution.py`
+4. Run `pytest day-0N/` — confirm the example passes
+5. Run `python day-0N/solution.py` — get the real answer
+6. Implement `solve_part2()` and repeat steps 4–5
+7. Update the progress table below
 
-## Recommended content for each day folder
-- `solution.py` should include:
-  - a `parse_input()` function
-  - a `solve_part1()` function
-  - a `solve_part2()` function
-  - a main guard that prints both answers
-- `test_solution.py` should:
-  - load the sample input
-  - assert the expected results for part 1 and part 2
+## Progress
 
-## Example file structure
-- `day-01/`
-  - `input.txt`
-  - `example.txt`
-  - `solution.py`
-  - `test_solution.py`
-- `day-02/`
-  - `input.txt`
-  - `solution.py`
-  - `test_solution.py`
-
-## Progress tracking
-Update this file with:
-- current day being solved
-- status for each day: `not started`, `in progress`, `done`
-- notes for puzzle details, approach, or edge cases
-
-### Current status
-- Day 01: in progress
-- Day 02: not started
-- Day 03: not started
-
-## Notes for restart safety
-- Reopen `plan.md` after restarting VS Code
-- Use the day folders as checkpoints
-- Add brief comments about what still needs work
-
-## Next actions
-- Create the first day folder and add the puzzle input
-- Add a starter `solution.py` template for the first day
-- Add a `README` or `TODO` later if desired
+| Day | Puzzle | Part 1 | Part 2 |
+|-----|--------|--------|--------|
+| 01  | Secret Entrance | in progress | not started |
+| 02  | Gift Shop | not started | not started |
