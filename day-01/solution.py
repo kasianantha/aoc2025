@@ -11,7 +11,6 @@ def parse_input(raw: str) -> List[str]:
 def solve_part1(data: List[str]) -> int:
     """Solve part 1 of day 1."""
     # TODO: implement part 1 logic
-    return 0
 
 
 def solve_part2(data: List[str]) -> int:
